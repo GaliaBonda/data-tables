@@ -72,3 +72,21 @@ const users = [
 ];
 
 DataTable(config1, users);
+
+var tabledata = [
+    { id: 30050, name: 'Вася', surname: 'Петров', age: 12 },
+    { id: 30051, name: 'Дима', surname: 'Васечкин', age: 15 },
+    { id: 30052, name: 'Галя', surname: 'Бондар', age: 30 },
+    { id: 30052, name: 'Галина', surname: 'Рижняк', age: 27 },
+];
+
+var table = new Tabulator("#example-table", {
+    height: 100, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+    data: tabledata, //assign data to table
+    layout: "fitColumns", //fit columns to width of table (optional)
+    columns: [ //Define Table Columns
+        { title: 'Имя', field: 'name', width: 150 },
+        { title: 'Фамилия', field: 'surname' },
+        { title: 'Возраст', field: 'age' },
+    ]
+});
