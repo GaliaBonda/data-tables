@@ -37,6 +37,10 @@ function DataTable(config, data) {
     for (let i = 0; i < data.length; i++) {
         let tr = document.createElement('tr');
         tBody.appendChild(tr);
+        tr.addEventListener("mouseover", hoverRow);
+        tr.addEventListener("mouseout", unHoverRow);
+        function hoverRow() { tr.style.backgroundColor = "#adadad" }
+        function unHoverRow() { tr.style.backgroundColor = "white" }
         let counterTd = document.createElement('td');
         tr.appendChild(counterTd);
         let counterTdText = document.createTextNode(++counter);
@@ -85,8 +89,9 @@ var table = new Tabulator("#example-table", {
     data: tabledata, //assign data to table
     layout: "fitColumns", //fit columns to width of table (optional)
     columns: [ //Define Table Columns
-        { title: 'Имя', field: 'name', width: 150 },
-        { title: 'Фамилия', field: 'surname' },
-        { title: 'Возраст', field: 'age' },
+        { title: "№", formatter: "rownum", hozAlign: "center", width: 80, headerHozAlign: "center" },
+        { title: 'Имя', field: 'name', width: 150, headerHozAlign: "center" },
+        { title: 'Фамилия', field: 'surname', headerHozAlign: "center" },
+        { title: 'Возраст', field: 'age', headerHozAlign: "center" },
     ]
 });
